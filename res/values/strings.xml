@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">DnD Tools</string>
+    <string name="fortitude">Fortitude</string>
+    <string name="reflex">Reflex</string>
+    <string name="will">Will</string>
+   	<string name="fortitude_short">FORT</string>
+   	<string name="reflex_short">REF</string>
+   	<string name="will_short">WILL</string>
+    <string-array name="classes">
+    	<item>Barbarian</item>
+    	<item>Bard</item>
+    	<item>Cleric</item>
+    	<item>Druid</item>
+        <item>Fighter</item>
+    	<item>Monk</item>
+    	<item>Paladin</item>
+    	<item>Ranger</item>
+    	<item>Rogue</item>
+        <item>Sorcerer</item>
+    	<item>Wizard</item>
+    </string-array>
+    	<string name="character_name">Character Name</string>
+</resources>

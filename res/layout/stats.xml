@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+    	android:id="@+id/linearLayout2"
+    	android:layout_width="fill_parent"
+    	android:layout_height="wrap_content" >
+
+        <TextView
+        	android:id="@+id/characterName"
+        	android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:text="@string/character_name"
+        	android:textAppearance="?android:attr/textAppearanceLarge" android:layout_weight="1"/>
+
+        <TextView
+        	android:id="@+id/race"
+        	android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:text="Race"
+        	android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    </LinearLayout>
+
+    <TextView
+    	android:id="@+id/classText"
+    	android:layout_width="wrap_content"
+    	android:layout_height="wrap_content"
+    	android:text="Level N CLass"
+    	android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TableLayout
+    	android:id="@+id/tableLayout1"
+    	android:layout_width="fill_parent"
+    	android:layout_height="wrap_content" >
+
+    	<TableRow
+    		android:id="@+id/tableRow1"
+    		android:layout_width="wrap_content"
+    		android:layout_height="wrap_content" >
+
+    		<TextView
+    			android:id="@+id/strLabel"
+    			android:layout_width="wrap_content"
+    			android:layout_height="wrap_content"
+    			android:text="STR"
+    			android:textAppearance="?android:attr/textAppearanceMedium"
+    			android:layout_weight="2" />
+
+    		<TextView
+    			android:id="@+id/strScore"
+    			android:layout_width="wrap_content"
+    			android:layout_height="wrap_content"
+    			android:text="10"
+    			android:textAppearance="?android:attr/textAppearanceSmall"
+    			android:layout_weight="1" />
+
+    		<TextView
+    			android:id="@+id/strMod"
+    			android:layout_width="wrap_content"
+    			android:layout_height="wrap_content"
+    			android:text="+0"
+    			android:textAppearance="?android:attr/textAppearanceSmall"
+    			android:layout_weight="1" />
+
+    		<TextView
+    			android:id="@+id/dexLabel"
+    			android:layout_width="wrap_content"
+    			android:layout_height="wrap_content"
+    			android:text="DEX"
+    			android:textAppearance="?android:attr/textAppearanceMedium"
+    			android:layout_weight="2" />
+
+    		<TextView
+    			android:id="@+id/dexScore"
+    			android:layout_width="wrap_content"
+    			android:layout_height="wrap_content"
+    			android:text="10"
+    			android:textAppearance="?android:attr/textAppearanceSmall"
+    			android:layout_weight="1" />
+
+    		<TextView
+    			android:id="@+id/dexMod"
+    			android:layout_width="wrap_content"
+    			android:layout_height="wrap_content"
+    			android:text="+0"
+    			android:textAppearance="?android:attr/textAppearanceSmall"
+    			android:layout_weight="1" />
+
+    	</TableRow>
+
+    	<TableRow
+    		android:id="@+id/tableRow2"
+    		android:layout_width="wrap_content"
+    		android:layout_height="wrap_content" >
+
+    		<TextView
+    			android:id="@+id/conLabel"
+    			android:layout_width="wrap_content"
+    			android:layout_height="wrap_content"
+    			android:text="CON"
+    			android:textAppearance="?android:attr/textAppearanceMedium"
+    			android:layout_weight="2" />
+
+    		<TextView
+    			android:id="@+id/conScore"
+    			android:layout_width="wrap_content"
+    			android:layout_height="wrap_content"
+    			android:text="10"
+    			android:textAppearance="?android:attr/textAppearanceSmall"
+    			android:layout_weight="1" />
+
+    		<TextView
+    			android:id="@+id/conMod"
+    			android:layout_width="wrap_content"
+    			android:layout_height="wrap_content"
+    			android:text="+0"
+    			android:textAppearance="?android:attr/textAppearanceSmall"
+    			android:layout_weight="1" />
+
+    		<TextView
+    			android:id="@+id/intLabel"
+    			android:layout_width="wrap_content"
+    			android:layout_height="wrap_content"
+    			android:text="INT"
+    			android:textAppearance="?android:attr/textAppearanceMedium"
+    			android:layout_weight="2" />
+
+    		<TextView
+    			android:id="@+id/intScore"
+    			android:layout_width="wrap_content"
+    			android:layout_height="wrap_content"
+    			android:text="10"
+    			android:textAppearance="?android:attr/textAppearanceSmall"
+    			android:layout_weight="1" />
+
+    		<TextView
+    			android:id="@+id/intMod"
+    			android:layout_width="wrap_content"
+    			android:layout_height="wrap_content"
+    			android:text="+0"
+    			android:textAppearance="?android:attr/textAppearanceSmall"
+    			android:layout_weight="1" />
+
+    	</TableRow>
+
+    	<TableRow
+    		android:id="@+id/tableRow3"
+    		android:layout_width="wrap_content"
+    		android:layout_height="wrap_content" >
+
+    		<TextView
+    			android:id="@+id/wisLabel"
+    			android:layout_width="wrap_content"
+    			android:layout_height="wrap_content"
+    			android:text="WIS"
+    			android:textAppearance="?android:attr/textAppearanceMedium"
+    			android:layout_weight="2" />
+
+    		<TextView
+    			android:id="@+id/wisScore"
+    			android:layout_width="wrap_content"
+    			android:layout_height="wrap_content"
+    			android:text="10"
+    			android:textAppearance="?android:attr/textAppearanceSmall"
+    			android:layout_weight="1" />
+
+    		<TextView
+    			android:id="@+id/wisMod"
+    			android:layout_width="wrap_content"
+    			android:layout_height="wrap_content"
+    			android:text="+0"
+    			android:textAppearance="?android:attr/textAppearanceSmall"
+    			android:layout_weight="1" />
+
+    		<TextView
+    			android:id="@+id/chaLabel"
+    			android:layout_width="wrap_content"
+    			android:layout_height="wrap_content"
+    			android:text="CHA"
+    			android:textAppearance="?android:attr/textAppearanceMedium"
+    			android:layout_weight="2" />
+
+    		<TextView
+    			android:id="@+id/chaScore"
+    			android:layout_width="wrap_content"
+    			android:layout_height="wrap_content"
+    			android:text="10"
+    			android:textAppearance="?android:attr/textAppearanceSmall"
+    			android:layout_weight="1" />
+
+    		<TextView
+    			android:id="@+id/chaMod"
+    			android:layout_width="wrap_content"
+    			android:layout_height="wrap_content"
+    			android:text="+0"
+    			android:textAppearance="?android:attr/textAppearanceSmall"
+    			android:layout_weight="1" />
+
+    	</TableRow>
+    </TableLayout>
+
+    <LinearLayout
+    	android:id="@+id/linearLayout1"
+    	android:layout_width="fill_parent"
+    	android:layout_height="wrap_content" >
+
+        <TextView
+        	android:id="@+id/fortLabel"
+        	android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:text="@string/fortitude_short"
+        	android:textAppearance="?android:attr/textAppearanceMedium"
+    		android:layout_weight="1" />
+
+        <TextView
+        	android:id="@+id/fortScore"
+        	android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:text="1"
+        	android:textAppearance="?android:attr/textAppearanceSmall"
+    		android:layout_weight="2" />
+
+        <TextView
+        	android:id="@+id/refLabel"
+        	android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:text="@string/reflex_short"
+        	android:textAppearance="?android:attr/textAppearanceMedium"
+    		android:layout_weight="1" />
+
+        <TextView
+        	android:id="@+id/refScore"
+        	android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:text="1"
+        	android:textAppearance="?android:attr/textAppearanceSmall"
+    		android:layout_weight="2" />
+
+        <TextView
+        	android:id="@+id/willLabel"
+        	android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:text="@string/will_short"
+        	android:textAppearance="?android:attr/textAppearanceMedium"
+    		android:layout_weight="1" />
+
+        <TextView
+        	android:id="@+id/willScore"
+        	android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:text="5"
+        	android:textAppearance="?android:attr/textAppearanceSmall"
+    		android:layout_weight="2" />
+
+    </LinearLayout>
+
+</LinearLayout>
