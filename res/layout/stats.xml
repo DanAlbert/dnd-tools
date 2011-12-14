@@ -258,4 +258,11 @@
 
     </LinearLayout>
 
+    <ListView
+    	android:id="@+id/traits"
+    	android:layout_width="fill_parent"
+    	android:layout_height="wrap_content" >
+        <!-- Preview: listitem=@android:layout/simple_list_item_2 -->
+    </ListView>
+
 </LinearLayout>

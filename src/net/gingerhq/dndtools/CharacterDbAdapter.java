@@ -35,14 +35,14 @@ public class CharacterDbAdapter
 	{
 		ContentValues values = new ContentValues();
 		values.put(CharacterTable.KEY_NAME, character.getName());
-		values.put(CharacterTable.KEY_RACE, character.getRace());
+		values.put(CharacterTable.KEY_RACE, character.getRace().getName());
 		values.put(CharacterTable.KEY_EXPERIENCE, character.getExperience());
-		values.put(CharacterTable.KEY_STRENGTH, character.getStrength());
-		values.put(CharacterTable.KEY_DEXTERITY, character.getDexterity());
-		values.put(CharacterTable.KEY_CONSTITUTION, character.getConstitution());
-		values.put(CharacterTable.KEY_INTELLIGENCE, character.getIntelligence());
-		values.put(CharacterTable.KEY_WISDOM, character.getWisdom());
-		values.put(CharacterTable.KEY_CHARISMA, character.getCharisma());
+		values.put(CharacterTable.KEY_STRENGTH, character.getStr());
+		values.put(CharacterTable.KEY_DEXTERITY, character.getDex());
+		values.put(CharacterTable.KEY_CONSTITUTION, character.getCon());
+		values.put(CharacterTable.KEY_INTELLIGENCE, character.getInt());
+		values.put(CharacterTable.KEY_WISDOM, character.getWis());
+		values.put(CharacterTable.KEY_CHARISMA, character.getCha());
 		
 		long id = db.insert(CharacterTable.TABLE_NAME, null, values);
 		if (id == -1)
@@ -59,14 +59,14 @@ public class CharacterDbAdapter
 	{
 		ContentValues values = new ContentValues();
 		values.put(CharacterTable.KEY_NAME, character.getName());
-		values.put(CharacterTable.KEY_RACE, character.getRace());
+		values.put(CharacterTable.KEY_RACE, character.getRace().getName());
 		values.put(CharacterTable.KEY_EXPERIENCE, character.getExperience());
-		values.put(CharacterTable.KEY_STRENGTH, character.getStrength());
-		values.put(CharacterTable.KEY_DEXTERITY, character.getDexterity());
-		values.put(CharacterTable.KEY_CONSTITUTION, character.getConstitution());
-		values.put(CharacterTable.KEY_INTELLIGENCE, character.getIntelligence());
-		values.put(CharacterTable.KEY_WISDOM, character.getWisdom());
-		values.put(CharacterTable.KEY_CHARISMA, character.getCharisma());
+		values.put(CharacterTable.KEY_STRENGTH, character.getStr());
+		values.put(CharacterTable.KEY_DEXTERITY, character.getDex());
+		values.put(CharacterTable.KEY_CONSTITUTION, character.getCon());
+		values.put(CharacterTable.KEY_INTELLIGENCE, character.getInt());
+		values.put(CharacterTable.KEY_WISDOM, character.getWis());
+		values.put(CharacterTable.KEY_CHARISMA, character.getCha());
 		
 		return db.update(CharacterTable.TABLE_NAME, values, CharacterTable.KEY_ID + "=" + character.getId(), null) > 0;
 	}
@@ -100,7 +100,17 @@ public class CharacterDbAdapter
 			character = new Character();
 			character.setId(result.getLong(0));
 			character.setName(result.getString(1));
-			character.setRace(result.getString(2));
+			
+			String race = result.getString(2);
+			if (race.equals("Elf"))
+			{
+				character.setRace(new Elf());
+			}
+			else
+			{
+				throw new Error("Invalid race");
+			}
+			
 			character.setExperience(result.getInt(3));
 			character.setStrength(result.getInt(4));
 			character.setDexterity(result.getInt(5));
@@ -139,7 +149,17 @@ public class CharacterDbAdapter
 				Character character = new Character();
 				character.setId(result.getLong(0));
 				character.setName(result.getString(1));
-				character.setRace(result.getString(2));
+
+				String race = result.getString(2);
+				if (race.equals("Elf"))
+				{
+					character.setRace(new Elf());
+				}
+				else
+				{
+					throw new Error("Invalid race");
+				}
+				
 				character.setExperience(result.getInt(3));
 				character.setStrength(result.getInt(4));
 				character.setDexterity(result.getInt(5));

@@ -101,7 +101,7 @@ public class DnDTools extends TabActivity
 		// If not found, create
 		this.character = new Character();
 		character.setName("Talandil Orren");
-		character.setRace("Elf");
+		character.setRace(new Elf());
 		character.setStrength(11);
 		character.setDexterity(14);
 		character.setConstitution(15);

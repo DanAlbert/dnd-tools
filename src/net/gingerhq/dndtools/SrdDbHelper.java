@@ -16,7 +16,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class SrdDbHelper extends SQLiteOpenHelper
 {
-	private static final String DATABASE_DIR = "/data/data/net.gingerhq.net/databases/";
+	private static final String DATABASE_DIR = "/data/data/net.gingerhq.dndtools/databases/";
 	private static final String DATABASE_NAME = "dnd35.db";
 	private static final int DATABASE_VERSION = 1;
 	
@@ -28,35 +28,86 @@ public class SrdDbHelper extends SQLiteOpenHelper
 		this.context = context;
 	}
 	
-	public void onCreate() throws IOException
+	public void create()
 	{
-		/*String outFile = DATABASE_DIR + DATABASE_NAME;
+		/*if (databaseExists())
+		{
+			// Do nothing
+		}
+		else
+		{
+			this.getReadableDatabase();
+			
+			try
+			{
+				copyDatabase();
+			}
+			catch (IOException e)
+			{
+				throw new Error("Could not copy database: " + e.toString());
+			}
+		}*/
+	}
+	
+	public void copyDatabase() throws IOException
+	{
+		String outFile = DATABASE_DIR + DATABASE_NAME;
 		
 		InputStream in = context.getResources().openRawResource(R.raw.dnd35);
+	
 		OutputStream out = new FileOutputStream(outFile);
 		
 		byte[] buffer = new byte[1024];
 		int length;
 		
-		while ((length = in.read(buffer)) > 0)
+		try
 		{
-			out.write(buffer, 0, length);
+			while ((length = in.read(buffer)) > 0)
+			{
+				out.write(buffer, 0, length);
+			}
+		}
+		catch (IOException e)
+		{
+			throw new Error(e.getMessage());
 		}
 		
 		out.flush();
 		out.close();
-		in.close();*/
+
+		in.close();
 	}
-	
+
+	public boolean databaseExists()
+	{
+		SQLiteDatabase db = null;
+		
+		try
+		{
+			String path = DATABASE_DIR + DATABASE_NAME;
+			db = SQLiteDatabase.openDatabase(path, null, SQLiteDatabase.OPEN_READONLY);
+		}
+		catch (SQLiteException e)
+		{
+			// No db yet
+		}
+		finally
+		{
+			if (db != null)
+			{
+				db.close();
+			}
+		}
+		
+		return (db != null);
+	}
 	@Override
 	public void onCreate(SQLiteDatabase db)
 	{
-		CharacterTable.onCreate(db);
 	}
 
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion)
 	{
-		CharacterTable.onUpgrade(db, oldVersion, newVersion);
 	}
 }

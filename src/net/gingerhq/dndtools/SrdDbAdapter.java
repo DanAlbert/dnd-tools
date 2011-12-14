@@ -23,6 +23,7 @@ public class SrdDbAdapter
 	public void open() throws SQLException
 	{
 		this.dbHelper = new SrdDbHelper(context);
+		//this.dbHelper.create();
 		db = dbHelper.getReadableDatabase();
 	}
 	

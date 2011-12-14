@@ -14,7 +14,7 @@ public class Character implements Serializable
 	private long id;
 	
 	private String name;
-	private String race;
+	private Race race;
 	private List<CharacterClass> classes;
 	private int experience;
 
@@ -57,12 +57,12 @@ public class Character implements Serializable
 		this.name = name;
 	}
 	
-	public String getRace()
+	public Race getRace()
 	{
 		return race;
 	}
 	
-	public void setRace(String race)
+	public void setRace(Race race)
 	{
 		this.race = race;
 	}
@@ -102,14 +102,14 @@ public class Character implements Serializable
 	/**
 	 * @return the strength
 	 */
-	public int getStrength()
+	public int getStr()
 	{
-		return strength;
+		return strength + this.race.getStrMod();
 	}
 	
-	public int getStrengthMod()
+	public int getStrMod()
 	{
-		return (int)Math.floor((getStrength() - 10) / 2.0f);
+		return (int)Math.floor((getStr() - 10) / 2.0f);
 	}
 
 	/**
@@ -123,14 +123,14 @@ public class Character implements Serializable
 	/**
 	 * @return the dexterity
 	 */
-	public int getDexterity()
+	public int getDex()
 	{
-		return dexterity;
+		return dexterity + this.race.getDexMod();
 	}
 	
-	public int getDexterityMod()
+	public int getDexMod()
 	{
-		return (int)Math.floor((getDexterity() - 10) / 2.0f);
+		return (int)Math.floor((getDex() - 10) / 2.0f);
 	}
 
 	/**
@@ -144,14 +144,14 @@ public class Character implements Serializable
 	/**
 	 * @return the constitution
 	 */
-	public int getConstitution()
+	public int getCon()
 	{
-		return constitution;
+		return constitution + this.race.getConMod();
 	}
 	
-	public int getConstitutionMod()
+	public int getConMod()
 	{
-		return (int)Math.floor((getConstitution() - 10) / 2.0f);
+		return (int)Math.floor((getCon() - 10) / 2.0f);
 	}
 
 	/**
@@ -165,14 +165,14 @@ public class Character implements Serializable
 	/**
 	 * @return the intelligence
 	 */
-	public int getIntelligence()
+	public int getInt()
 	{
-		return intelligence;
+		return intelligence + this.race.getIntMod();
 	}
 	
-	public int getIntelligenceMod()
+	public int getIntMod()
 	{
-		return (int)Math.floor((getIntelligence() - 10) / 2.0f);
+		return (int)Math.floor((getInt() - 10) / 2.0f);
 	}
 
 	/**
@@ -186,14 +186,14 @@ public class Character implements Serializable
 	/**
 	 * @return the wisdom
 	 */
-	public int getWisdom()
+	public int getWis()
 	{
-		return wisdom;
+		return wisdom + this.race.getWisMod();
 	}
 	
-	public int getWisdomMod()
+	public int getWisMod()
 	{
-		return (int)Math.floor((getWisdom() - 10) / 2.0f);
+		return (int)Math.floor((getWis() - 10) / 2.0f);
 	}
 
 	/**
@@ -207,14 +207,14 @@ public class Character implements Serializable
 	/**
 	 * @return the charisma
 	 */
-	public int getCharisma()
+	public int getCha()
 	{
-		return charisma;
+		return charisma + this.race.getChaMod();
 	}
 	
-	public int getCharismaMod()
+	public int getChaMod()
 	{
-		return (int)Math.floor((getCharisma() - 10) / 2.0f);
+		return (int)Math.floor((getCha() - 10) / 2.0f);
 	}
 
 	/**
@@ -225,7 +225,7 @@ public class Character implements Serializable
 		this.charisma = charisma;
 	}
 	
-	public int getFortitudeSave()
+	public int getFortSave()
 	{
 		int total = 0;
 		Iterator<CharacterClass> iter = getClasses().iterator();
@@ -237,7 +237,7 @@ public class Character implements Serializable
 		return total;
 	}
 	
-	public int getReflexSave()
+	public int getRefSave()
 	{
 		int total = 0;
 		Iterator<CharacterClass> iter = getClasses().iterator();
