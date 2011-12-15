@@ -9,10 +9,9 @@ import android.content.res.Resources;
  * @author Dan Albert
  *
  */
-public class CharacterClass
+public class ClassLevel
 {
 	private long id;
-	private long srdId;
 	
 	private String name;
 	private int level;
@@ -30,16 +29,6 @@ public class CharacterClass
 	public void setId(long id)
 	{
 		this.id = id;
-	}
-	
-	public long getSrdId()
-	{
-		return srdId;
-	}
-	
-	public void setSrdId(long srdId)
-	{
-		this.srdId = srdId;
 	}
 	
 	public String getName()
@@ -147,7 +136,7 @@ public class CharacterClass
 		this.specials.add(special);
 	}
 	
-	public CharacterClass()
+	public ClassLevel()
 	{
 		this.specials = new ArrayList<String>();
 	}

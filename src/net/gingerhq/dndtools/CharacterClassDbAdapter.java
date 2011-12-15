@@ -1,8 +1,15 @@
 package net.gingerhq.dndtools;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+
+import javax.xml.parsers.FactoryConfigurationError;
+import javax.xml.parsers.ParserConfigurationException;
+
+import org.xml.sax.SAXException;
+import org.xmlpull.v1.XmlPullParserException;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -15,7 +22,7 @@ public class CharacterClassDbAdapter
 	private Context context;
 	private SQLiteDatabase db;
 	private CharacterDbHelper dbHelper;
-	private SrdDbAdapter srd;
+	private ClassLevelAdapter classLevelAdapter;
 	
 	public CharacterClassDbAdapter(Context context)
 	{
@@ -27,7 +34,18 @@ public class CharacterClassDbAdapter
 		this.dbHelper = new CharacterDbHelper(context);
 		db = dbHelper.getWritableDatabase();
 		
-		this.srd = new SrdDbAdapter(context);
+		try
+		{
+			this.classLevelAdapter = new ClassLevelXmlAdapter(context);
+		}
+		catch (XmlPullParserException e)
+		{
+			throw new Error("An error occured while parsing the XML file");
+		}
+		catch (IOException e)
+		{
+			throw new Error("An error occured while reading the XML file");
+		}
 	}
 	
 	public void close()
@@ -38,7 +56,7 @@ public class CharacterClassDbAdapter
 	public boolean reconcile(Character character)
 	{
 		// Remove all classes currently associated with the character since some may no longer be valid
-		Iterator<CharacterClass> iter = fetchAll(character).iterator();
+		Iterator<ClassLevel> iter = fetchAll(character).iterator();
 		while (iter.hasNext())
 		{
 			delete(iter.next());
@@ -48,11 +66,12 @@ public class CharacterClassDbAdapter
 		iter = character.getClasses().iterator();
 		while (iter.hasNext())
 		{
-			CharacterClass current = iter.next();
+			ClassLevel current = iter.next();
 			
 			ContentValues values = new ContentValues();
 			values.put(CharacterClassTable.KEY_CHARACTER_ID, character.getId());
-			values.put(CharacterClassTable.KEY_CLASS_ID, current.getSrdId());
+			values.put(CharacterClassTable.KEY_CLASS_NAME, current.getName());
+			values.put(CharacterClassTable.KEY_CLASS_LEVEL, current.getLevel());
 			
 			long id = db.insert(CharacterClassTable.TABLE_NAME, null, values);
 			if (id == -1)
@@ -64,19 +83,20 @@ public class CharacterClassDbAdapter
 		return true;
 	}
 	
-	public boolean delete(CharacterClass c)
+	public boolean delete(ClassLevel c)
 	{
 		return db.delete(CharacterClassTable.TABLE_NAME, CharacterClassTable.KEY_ID + "=" + c.getId(), null) > 0;
 	}
 	
-	public List<CharacterClass> fetchAll(Character character)
+	public List<ClassLevel> fetchAll(Character character)
 	{
-		List<CharacterClass> classes = new ArrayList<CharacterClass>();
+		List<ClassLevel> classes = new ArrayList<ClassLevel>();
 		String[] columns = new String[]
 		{
 			CharacterClassTable.KEY_ID,
 			CharacterClassTable.KEY_CHARACTER_ID,
-			CharacterClassTable.KEY_CLASS_ID
+			CharacterClassTable.KEY_CLASS_NAME,
+			CharacterClassTable.KEY_CLASS_LEVEL
 		};
 		
 		Cursor result = db.query(CharacterClassTable.TABLE_NAME, columns, null, null, null, null, null);
@@ -85,9 +105,14 @@ public class CharacterClassDbAdapter
 		{
 			do
 			{
-				if (result.getLong(1) == character.getId())
+				long rowId = result.getLong(0);
+				long characterId = result.getLong(1);
+				String className = result.getString(2);
+				int classLevel = result.getInt(3);
+				
+				if (characterId == character.getId())
 				{
-					CharacterClass c = this.srd.find(result.getLong(2));
+					ClassLevel c = this.classLevelAdapter.find(className, classLevel);
 					
 					if (c != null)
 					{
@@ -98,7 +123,7 @@ public class CharacterClassDbAdapter
 						throw new Error("Could not load character class from SRD");
 					}
 					
-					c.setId(result.getLong(0));
+					c.setId(rowId);
 				}
 			} while (result.moveToNext());
 		}

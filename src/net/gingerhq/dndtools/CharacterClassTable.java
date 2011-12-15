@@ -13,13 +13,15 @@ public class CharacterClassTable
 	public static final String TABLE_NAME = "character_classes";
 	public static final String KEY_ID = "_id";
 	public static final String KEY_CHARACTER_ID = "character_id";
-	public static final String KEY_CLASS_ID = "class_id";
+	public static final String KEY_CLASS_NAME = "class_name";
+	public static final String KEY_CLASS_LEVEL = "class_level";
 	
 	private static final String CHARACTER_CLASSES_TABLE_CREATE =
 			"CREATE TABLE " + TABLE_NAME + " (" +
 			KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, " +
 			KEY_CHARACTER_ID + " INT NOT NULL, " +
-			KEY_CLASS_ID + " INT NOT NULL);";
+			KEY_CLASS_NAME + " TEXT NOT NULL, " +
+			KEY_CLASS_LEVEL + " INT NOT NULL);";
 	
 	public static void onCreate(SQLiteDatabase db)
 	{

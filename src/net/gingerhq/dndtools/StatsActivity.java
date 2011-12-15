@@ -59,10 +59,10 @@ public class StatsActivity extends Activity
 		race.setText(this.character.getRace().getName());
 		
 		String classText = "";
-		Iterator<CharacterClass> classIter = this.character.getClasses().iterator();
+		Iterator<ClassLevel> classIter = this.character.getClasses().iterator();
 		while (classIter.hasNext())
 		{
-			CharacterClass current = classIter.next();
+			ClassLevel current = classIter.next();
 			classText += current.toString();
 			
 			if (classIter.hasNext())

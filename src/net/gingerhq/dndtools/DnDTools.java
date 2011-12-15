@@ -27,7 +27,7 @@ public class DnDTools extends TabActivity
 {
 	private CharacterDbAdapter characterDbAdapter;
 	private CharacterClassDbAdapter classDbAdapter;
-	private SrdDbAdapter srdDbAdapter;
+	private ClassLevelAdapter classLevelAdapter;
 	private Character character;
 	
 	/** Called when the activity is first created. */
@@ -43,8 +43,14 @@ public class DnDTools extends TabActivity
 		this.classDbAdapter = new CharacterClassDbAdapter(this);
 		this.classDbAdapter.open();
 		
-		this.srdDbAdapter = new SrdDbAdapter(this);
-		this.srdDbAdapter.open();
+		try
+		{
+			this.classLevelAdapter = new ClassLevelXmlAdapter(this);
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
 		
 		loadCharacter();
 		
@@ -90,7 +96,7 @@ public class DnDTools extends TabActivity
 					this.character = current;
 					
 					// Load character's classes
-					List<CharacterClass> classes = classDbAdapter.fetchAll(this.character);
+					List<ClassLevel> classes = classDbAdapter.fetchAll(this.character);
 					this.character.setClasses(classes);
 					
 					return;
@@ -110,8 +116,8 @@ public class DnDTools extends TabActivity
 		character.setCharisma(18);
 		
 		// Add level 4 sorcerer to class list
-		List<CharacterClass> classes = new ArrayList<CharacterClass>();
-		CharacterClass c = this.srdDbAdapter.find("Sorcerer", 4);
+		List<ClassLevel> classes = new ArrayList<ClassLevel>();
+		ClassLevel c = this.classLevelAdapter.find("Sorcerer", 4);
 		if (c != null)
 		{
 			classes.add(c);

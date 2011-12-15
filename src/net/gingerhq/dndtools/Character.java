@@ -15,7 +15,7 @@ public class Character implements Serializable
 	
 	private String name;
 	private Race race;
-	private List<CharacterClass> classes;
+	private List<ClassLevel> classes;
 	private int experience;
 
 	private int strength;
@@ -70,7 +70,7 @@ public class Character implements Serializable
 	/**
 	 * @return the classes
 	 */
-	public List<CharacterClass> getClasses()
+	public List<ClassLevel> getClasses()
 	{
 		return classes;
 	}
@@ -78,7 +78,7 @@ public class Character implements Serializable
 	/**
 	 * @param classes the classes to set
 	 */
-	public void setClasses(List<CharacterClass> classes)
+	public void setClasses(List<ClassLevel> classes)
 	{
 		this.classes = classes;
 	}
@@ -228,7 +228,7 @@ public class Character implements Serializable
 	public int getFortSave()
 	{
 		int total = 0;
-		Iterator<CharacterClass> iter = getClasses().iterator();
+		Iterator<ClassLevel> iter = getClasses().iterator();
 		while (iter.hasNext())
 		{
 			total += iter.next().getFortitudeSave();
@@ -240,7 +240,7 @@ public class Character implements Serializable
 	public int getRefSave()
 	{
 		int total = 0;
-		Iterator<CharacterClass> iter = getClasses().iterator();
+		Iterator<ClassLevel> iter = getClasses().iterator();
 		while (iter.hasNext())
 		{
 			total += iter.next().getReflexSave();
@@ -252,7 +252,7 @@ public class Character implements Serializable
 	public int getWillSave()
 	{
 		int total = 0;
-		Iterator<CharacterClass> iter = getClasses().iterator();
+		Iterator<ClassLevel> iter = getClasses().iterator();
 		while (iter.hasNext())
 		{
 			total += iter.next().getWillSave();
@@ -263,6 +263,6 @@ public class Character implements Serializable
 	
 	public Character()
 	{
-		this.classes = new ArrayList<CharacterClass>();
+		this.classes = new ArrayList<ClassLevel>();
 	}
 }
