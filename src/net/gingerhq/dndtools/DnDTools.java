@@ -1,14 +1,8 @@
 package net.gingerhq.dndtools;
 
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
-
-import javax.xml.parsers.FactoryConfigurationError;
-import javax.xml.parsers.ParserConfigurationException;
-
-import org.xml.sax.SAXException;
 
 import net.gingerhq.dndtools.R;
 
@@ -17,7 +11,6 @@ import android.app.TabActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TabHost;
-import android.widget.TextView;
 
 /**
  * @author Dan Albert
@@ -116,7 +109,7 @@ public class DnDTools extends TabActivity
 		character.setCharisma(18);
 		
 		// Add level 4 sorcerer to class list
-		List<ClassLevel> classes = new ArrayList<ClassLevel>();
+		List<ClassLevel> classes = new LinkedList<ClassLevel>();
 		ClassLevel c = this.classLevelAdapter.find("Sorcerer", 4);
 		if (c != null)
 		{

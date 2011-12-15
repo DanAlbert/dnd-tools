@@ -1,14 +1,10 @@
 package net.gingerhq.dndtools;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 
-import javax.xml.parsers.FactoryConfigurationError;
-import javax.xml.parsers.ParserConfigurationException;
-
-import org.xml.sax.SAXException;
 import org.xmlpull.v1.XmlPullParserException;
 
 import android.content.ContentValues;
@@ -17,7 +13,7 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
-public class CharacterClassDbAdapter
+public class CharacterClassDbAdapter implements CharacterClassAdapter, SQLiteAdapter
 {
 	private Context context;
 	private SQLiteDatabase db;
@@ -90,7 +86,7 @@ public class CharacterClassDbAdapter
 	
 	public List<ClassLevel> fetchAll(Character character)
 	{
-		List<ClassLevel> classes = new ArrayList<ClassLevel>();
+		List<ClassLevel> classes = new LinkedList<ClassLevel>();
 		String[] columns = new String[]
 		{
 			CharacterClassTable.KEY_ID,

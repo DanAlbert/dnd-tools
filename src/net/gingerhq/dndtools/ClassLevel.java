@@ -1,9 +1,7 @@
 package net.gingerhq.dndtools;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
-
-import android.content.res.Resources;
 
 /**
  * @author Dan Albert
@@ -138,7 +136,7 @@ public class ClassLevel
 	
 	public ClassLevel()
 	{
-		this.specials = new ArrayList<String>();
+		this.specials = new LinkedList<String>();
 	}
 	
 	public String toString()

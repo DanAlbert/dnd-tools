@@ -1,7 +1,5 @@
 package net.gingerhq.dndtools;
 
-import java.util.List;
-
 import android.database.sqlite.SQLiteDatabase;
 
 /**

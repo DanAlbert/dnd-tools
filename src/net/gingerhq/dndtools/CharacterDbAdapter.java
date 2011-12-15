@@ -1,6 +1,6 @@
 package net.gingerhq.dndtools;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 import android.content.ContentValues;
@@ -9,7 +9,7 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
-public class CharacterDbAdapter
+public class CharacterDbAdapter implements CharacterAdapter, SQLiteAdapter
 {
 	private Context context;
 	private SQLiteDatabase db;
@@ -125,7 +125,7 @@ public class CharacterDbAdapter
 	}
 	public List<Character> fetchAll()
 	{
-		List<Character> characters = new ArrayList<Character>();
+		List<Character> characters = new LinkedList<Character>();
 		String[] columns = new String[]
 		{
 			CharacterTable.KEY_ID,

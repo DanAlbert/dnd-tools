@@ -10,7 +10,6 @@ import net.gingerhq.dndtools.R;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;

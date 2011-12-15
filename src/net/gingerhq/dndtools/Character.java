@@ -1,8 +1,8 @@
 package net.gingerhq.dndtools;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -11,6 +11,8 @@ import java.util.List;
  */
 public class Character implements Serializable
 {
+	private static final long serialVersionUID = -3598354638331153399L;
+
 	private long id;
 	
 	private String name;
@@ -263,6 +265,6 @@ public class Character implements Serializable
 	
 	public Character()
 	{
-		this.classes = new ArrayList<ClassLevel>();
+		this.classes = new LinkedList<ClassLevel>();
 	}
 }

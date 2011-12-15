@@ -63,9 +63,6 @@ public final class R {
         public static final int spells=0x7f030004;
         public static final int stats=0x7f030005;
     }
-    public static final class raw {
-        public static final int dnd35=0x7f040000;
-    }
     public static final class string {
         public static final int app_name=0x7f050000;
         public static final int character_name=0x7f050007;
@@ -75,5 +72,8 @@ public final class R {
         public static final int reflex_short=0x7f050005;
         public static final int will=0x7f050003;
         public static final int will_short=0x7f050006;
+    }
+    public static final class xml {
+        public static final int class_levels=0x7f040000;
     }
 }
